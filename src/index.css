@@ -13,3 +13,16 @@
     font-family: 'Inter';
   }
 }
+
+/* Components styles */
+@layer components {
+  /* Badge styles */
+  .badge {
+    @apply w-28 h-8 rounded gap-1;
+    @apply flex items-center justify-center;
+  }
+
+  .badge__label {
+    @apply text-base text-dark font-normal;
+  }
+}
