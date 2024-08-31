@@ -40,4 +40,21 @@
     @apply border border-solid border-primary text-primary;
     @apply hover:bg-secondary hover:text-grey;
   }
+
+  /* Input styles */
+  .input {
+    @apply flex flex-col items-start;
+  }
+
+  .input__label {
+    @apply text-silver text-base font-normal mb-2.5;
+  }
+
+  .input__box {
+    @apply w-72 h-10 px-3 bg-light gap-1.5;
+    @apply border border-solid border-light rounded-lg outline-0;
+    @apply text-base font-normal text-light;
+    @apply transition-all duration-500;
+    @apply hover:shadow-lg hover:border-dark;
+  }
 }
