@@ -57,4 +57,32 @@
     @apply transition-all duration-500;
     @apply hover:shadow-lg hover:border-dark;
   }
+
+  /* Pagination styles */
+  .pagination {
+    @apply flex justify-center my-3.5;
+  }
+
+  .pagination__button {
+    @apply flex items-center justify-center;
+    @apply w-9 h-7 px-1 py-2 gap-2.5 cursor-pointer;
+    @apply transition-all duration-500;
+  }
+
+  .pagination__control {
+    @apply fill-inactive hover:fill-active;
+    @apply transition-all duration-500;
+  }
+
+  .pagination__page {
+    @apply text-sm font-normal text-inactive rounded cursor-pointer;
+  }
+
+  .pagination__page--active {
+    @apply bg-dark text-active shadow-lg cursor-auto;
+  }
+
+  .pagination__page--inactive {
+    @apply text-inactive hover:text-active;
+  }
 }
