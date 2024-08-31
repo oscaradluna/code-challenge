@@ -25,4 +25,19 @@
   .badge__label {
     @apply text-base text-dark font-normal;
   }
+
+  /* Button styles */
+  .button {
+    @apply w-28 h-11 rounded-lg text-base font-medium gap-3;
+    @apply transition-all duration-500 hover:shadow-lg;
+  }
+
+  .button--primary {
+    @apply bg-primary text-grey hover:text-white;
+  }
+
+  .button--secondary {
+    @apply border border-solid border-primary text-primary;
+    @apply hover:bg-secondary hover:text-grey;
+  }
 }
