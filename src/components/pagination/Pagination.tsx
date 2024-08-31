@@ -1,7 +1,6 @@
 // src\components\pagination\Pagination.tsx
 
-import { ChevronLeft } from "../../assets/icons/chevronLeft";
-import { ChevronRight } from "../../assets/icons/chevronRight";
+import { Icon } from "../icon/Icon";
 
 type PaginationProps = {
   /**
@@ -38,8 +37,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         disabled={page === 1}
         onClick={() => onChange(page - 1)}
       >
-        <ChevronLeft
-          className="pagination__icon"
+        <Icon
+          type="chevronLeft"
+          pathClassName="pagination__icon"
         />
       </button>
 
@@ -63,8 +63,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         disabled={page === pages}
         onClick={() => onChange(page + 1)}
       >
-        <ChevronRight
-          className="pagination__icon"
+        <Icon
+          type="chevronRight"
+          pathClassName="pagination__icon"
         />
       </button>
     </div>
