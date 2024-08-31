@@ -65,21 +65,25 @@
 
   .pagination__button {
     @apply flex items-center justify-center;
-    @apply w-9 h-7 px-1 py-2 gap-2.5 cursor-pointer;
-    @apply transition-all duration-500;
+    @apply w-9 h-7 px-1 py-2 gap-2.5 rounded;
+    @apply transition-all duration-500 hover:bg-light hover:shadow-lg;
   }
 
   .pagination__control {
-    @apply fill-inactive hover:fill-active;
+    @apply disabled:hover:bg-transparent disabled:hover:shadow-none;
+  }
+
+  .pagination__icon {
+    @apply fill-inactive group-hover:fill-active group-disabled:group-hover:fill-inactive;
     @apply transition-all duration-500;
   }
 
   .pagination__page {
-    @apply text-sm font-normal text-inactive rounded cursor-pointer;
+    @apply text-sm font-normal text-inactive;
   }
 
   .pagination__page--active {
-    @apply bg-dark text-active shadow-lg cursor-auto;
+    @apply bg-dark text-active shadow-lg disabled:hover:bg-dark;
   }
 
   .pagination__page--inactive {

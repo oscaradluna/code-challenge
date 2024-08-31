@@ -34,12 +34,12 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="pagination">
       <button
-        className='pagination__button'
+        className='pagination__button pagination__control group'
         disabled={page === 1}
         onClick={() => onChange(page - 1)}
       >
         <ChevronLeft
-          className="pagination__control"
+          className="pagination__icon"
         />
       </button>
 
@@ -59,12 +59,12 @@ export const Pagination: React.FC<PaginationProps> = ({
       ))}
 
       <button
-        className='pagination__button'
+        className='pagination__button pagination__control group'
         disabled={page === pages}
         onClick={() => onChange(page + 1)}
       >
         <ChevronRight
-          className="pagination__control"
+          className="pagination__icon"
         />
       </button>
     </div>
