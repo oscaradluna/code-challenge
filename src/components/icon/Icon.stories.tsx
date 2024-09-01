@@ -13,8 +13,8 @@ export default {
   argTypes: {
     type: {
       control: 'select',
-      options: ['chevronDown', 'chevronLeft', 'chevronRight', 'eye', 'funnel', 'trash', 'xMark'],
-      description: 'Tipo de icono que se mostrará.'
+      options: ['caretUpDown', 'chevronDown', 'chevronLeft', 'chevronRight', 'eye', 'funnel', 'trash', 'xMark'],
+      description: 'Tipo (`caretUpDown`, `chevronDown`, `chevronLeft`, `chevronRight`, `eye`, `funnel`, `trash` o `xMark`).'
     },
     pathClassName: {
       control: 'text',
@@ -24,6 +24,12 @@ export default {
 } as Meta<typeof Icon>;
 
 const Template: StoryFn<typeof Icon> = (args) => <Icon {...args} />;
+
+export const CaretUpDown = Template.bind({});
+CaretUpDown.args = {
+  type: 'caretUpDown',
+  pathClassName: 'fill-active'
+}
 
 export const ChevronDown = Template.bind({});
 ChevronDown.args = {
