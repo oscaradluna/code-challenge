@@ -4,17 +4,19 @@ import { Icon } from "../icon/Icon";
 
 type PaginationProps = {
   /**
-   * Número total de páginas.
+   * Número total de páginas
    */
   pages: number,
 
   /**
-   * Página actual.
+   * Página actual
    */
   page: number,
 
   /**
-   * Función que se ejecutará al cambiar de página.
+   * Función que se ejecutará al cambiar de página
+   * 
+   * @returns Número de página seleccionada
    */
   onChange: (page: number) => void
 };

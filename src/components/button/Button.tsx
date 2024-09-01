@@ -2,17 +2,17 @@
 
 type ButtonProps = {
   /**
-   * Define si el botón será primario o secundario.
+   * Define si el botón será primario o secundario
    */
   primary: boolean,
 
   /**
-   * Texto a mostrar.
+   * Texto a mostrar
    */
   label: string,
 
   /**
-   * Función que se ejecutará al hacer click el botón.
+   * Función que se ejecutará al hacer click el botón
    */
   onClick?: () => void
 };

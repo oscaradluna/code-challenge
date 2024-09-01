@@ -2,22 +2,24 @@
 
 type InputProps = {
   /**
-   * Identidicador del campo.
+   * Identidicador del campo
    */
   id: string,
 
   /**
-   * Nombre del campo.
+   * Nombre del campo
    */
   label: string,
 
   /**
-   * Placeholder del campo.
+   * Placeholder del campo
    */
   placeholder?: string,
 
   /**
-   * Función que se ejecutará al cambiar el valor.
+   * Función que se ejecutará al cambiar el valor
+   * 
+   * @returns Evento de cambio
    */
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 };
