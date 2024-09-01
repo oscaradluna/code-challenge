@@ -134,4 +134,39 @@
   .modal__bottom {
     @apply mt-5 flex justify-end;
   }
+
+  /* Select styles */
+  .select {
+    @apply w-36 h-10 px-3 py-4 bg-light cursor-pointer;
+    @apply border border-light rounded-lg;
+    @apply flex items-center justify-between;
+    @apply transition-all duration-500;
+    @apply hover:shadow-lg hover:border-dark;
+  }
+
+  .select__label {
+    @apply text-base font-normal text-light;
+  }
+
+  .select__icon {
+    @apply fill-light origin-center transform transition-all duration-500;
+  }
+
+  .select__list {
+    @apply w-36 mt-2 fixed overflow-hidden rounded-lg;
+    @apply transition-all duration-700;
+  }
+
+  .select__option {
+    @apply w-full h-10 px-3 py-4 bg-light cursor-pointer;
+    @apply border border-light;
+    @apply flex items-center justify-between;
+    @apply transition-all duration-500;
+    @apply hover:bg-secondary hover:border-secondary;
+  }
+
+  .select__option-label {
+    @apply transition-all duration-500;
+    @apply group-hover:text-dark;
+  }
 }

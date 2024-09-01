@@ -9,7 +9,8 @@ module.exports = {
       colors: {
         primary: '#B1F149',
         active: '#9CA3AF',
-        inactive: '#6B7280'
+        inactive: '#6B7280',
+        light: '#D1D5DB',
       },
       textColor: {
         primary: '#B1F149',
@@ -31,6 +32,7 @@ module.exports = {
       },
       borderColor: {
         primary: '#B1F149',
+        secondary: '#CAF684',
         dark: '#3A424E',
         light: '#4B5563',
         grey: '#6B7280'
