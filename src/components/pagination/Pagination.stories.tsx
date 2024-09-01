@@ -30,13 +30,13 @@ export default {
 } as Meta<typeof Pagination>;
 
 const Template: StoryFn<typeof Pagination> = (args) => {
-  const [currentPage, setCurrentPage] = useState(args.page);
+  const [page, setPage] = useState(args.page);
 
   return (
     <Pagination
       {...args}
-      page={currentPage}
-      onChange={(newCurrentPage) => setCurrentPage(newCurrentPage)}
+      page={page}
+      onChange={(newPage) => setPage(newPage)}
     />
   )
 };
