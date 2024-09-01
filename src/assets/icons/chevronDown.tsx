@@ -1,10 +1,8 @@
 // src\assets\icons\chevronDown.ts
 
-interface ChevronDownProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const ChevronDown: React.FC<ChevronDownProps> = ({pathClassName}) => (
+export const ChevronDown: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="16"
         height="16"

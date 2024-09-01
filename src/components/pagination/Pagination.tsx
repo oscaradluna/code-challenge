@@ -16,7 +16,7 @@ type PaginationProps = {
   /**
    * Función que se ejecutará al cambiar de página
    * 
-   * @returns Número de página seleccionada
+   * @param page Número de página seleccionada
    */
   onChange: (page: number) => void
 };

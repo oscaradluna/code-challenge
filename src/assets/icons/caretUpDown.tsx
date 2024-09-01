@@ -1,10 +1,8 @@
 // src\assets\icons\caretUpDown.tsx
 
-interface CaretUpDownProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const CaretUpDown: React.FC<CaretUpDownProps> = ({pathClassName}) => (
+export const CaretUpDown: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="16"
         height="16"

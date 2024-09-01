@@ -4,6 +4,8 @@ import { useState } from "react";
 import classNames from "classnames";
 import { Icon } from "../icon/Icon";
 
+import { SelectOptionsProps } from "../../interfaces/SelectProps";
+
 type SelectProps = {
   /**
    * Lista de opciones que se mostrarán
@@ -11,10 +13,7 @@ type SelectProps = {
    * @param [].value Valor de la opción
    * @param [].label Texto de la opción
    */
-  options: {
-    value: string,
-    label: string
-  }[],
+  options: SelectOptionsProps[],
 
   /**
    * Valor de la opción seleccionada
@@ -24,7 +23,7 @@ type SelectProps = {
   /**
    * Función que se ejecutará al cambiar de opción
    * 
-   * @returns Valor de la nueva opción seleccionada
+   * @param value Valor de la nueva opción seleccionada
    */
   onChange: (value: string) => void
 };

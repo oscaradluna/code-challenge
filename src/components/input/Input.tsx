@@ -19,7 +19,7 @@ type InputProps = {
   /**
    * Función que se ejecutará al cambiar el valor
    * 
-   * @returns Evento de cambio
+   * @param e Evento de cambio
    */
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 };

@@ -1,10 +1,8 @@
 // src\assets\icons\funnel.ts
 
-interface FunnelProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const Funnel: React.FC<FunnelProps> = ({pathClassName}) => (
+export const Funnel: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="20"
         height="20"

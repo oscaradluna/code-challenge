@@ -1,10 +1,8 @@
 // src\assets\icons\xMark.ts
 
-interface xMarkProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const XMark: React.FC<xMarkProps> = ({pathClassName}) => (
+export const XMark: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="24"
         height="24"

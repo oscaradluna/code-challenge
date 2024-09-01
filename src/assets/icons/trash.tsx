@@ -1,10 +1,8 @@
 // src\assets\icons\trash.ts
 
-interface TrashProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const Trash: React.FC<TrashProps> = ({pathClassName}) => (
+export const Trash: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="24"
         height="24"

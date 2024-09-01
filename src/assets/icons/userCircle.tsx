@@ -1,10 +1,8 @@
 // src\assets\icons\userCircle.ts
 
-interface UserCircleProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const UserCircle: React.FC<UserCircleProps> = ({pathClassName}) => (
+export const UserCircle: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="24"
         height="24"

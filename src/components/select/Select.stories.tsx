@@ -4,6 +4,27 @@ import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Select } from './Select';
 
+import { SelectOptionsProps } from "../../interfaces/SelectProps";
+
+const searchColumns: SelectOptionsProps[] = [
+  {
+    value: "name",
+    label: "Nombre"
+  },
+  {
+    value: "email",
+    label: "Correo"
+  },
+  {
+    value: "state",
+    label: "Estado"
+  },
+  {
+    value: "order_number",
+    label: "No. pedido"
+  }
+];
+
 export default {
   title: 'Components/Select',
   component: Select,
@@ -12,9 +33,9 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    options: {
+    fields: {
       control: 'object',
-      description: 'Lista de opciones que se mostrarán.'
+      description: 'Lista de campos que se mostrarán.'
     },
     value: {
       control: 'text',
@@ -23,6 +44,9 @@ export default {
     onChange: {
       description: 'Función que se ejecutará al cambiar de opción.'
     }
+  },
+  args: {
+    onChange: () => {}
   }
 } as Meta<typeof Select>;
 
@@ -40,27 +64,6 @@ const Template: StoryFn<typeof Select> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  options: [
-    {
-      value: 'name',
-      label: 'Nombre'
-    },
-    {
-      value: 'email',
-      label: 'Correo'
-    },
-    {
-      value: 'state',
-      label: 'Estado'
-    },
-    {
-      value: 'order_number',
-      label: 'No. pedido'
-    },
-    {
-      value: 'status',
-      label: 'Estatus'
-    }
-  ],
-  value: 'name'
+  options: searchColumns,
+  value: searchColumns[0].value
 };

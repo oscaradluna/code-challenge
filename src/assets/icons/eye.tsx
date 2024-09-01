@@ -1,10 +1,8 @@
 // src\assets\icons\eye.ts
 
-interface EyeProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const Eye: React.FC<EyeProps> = ({pathClassName}) => (
+export const Eye: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="24"
         height="24"

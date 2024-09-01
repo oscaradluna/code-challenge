@@ -3,6 +3,9 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Modal } from './Modal';
 
+import data from '../../data/clients.json';
+import { getModalFields } from '../../utils/getModalFields';
+
 export default {
   title: 'Components/Modal',
   component: Modal,
@@ -33,26 +36,5 @@ const Template: StoryFn<typeof Modal> = (args) => <Modal {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: 'Detalles de la orden',
-  fields: [
-    {
-      name: 'Nombre',
-      value: 'Kappa Services'
-    },
-    {
-      name: 'Correo',
-      value: 'contacto@thetaenterprises.com'
-    },
-    {
-      name: 'Estado',
-      value: 'Hidalgo'
-    },
-    {
-      name: 'No. de pedido',
-      value: 'WV-70037785-01'
-    },
-    {
-      name: 'Estatus',
-      value: 'Enviado'
-    }
-  ]
+  fields: getModalFields(data[0])
 };

@@ -3,6 +3,8 @@
 import { Icon } from "../icon/Icon";
 import { Button } from "../button/Button";
 
+import { ModalFieldsProps } from "../../interfaces/ModalProps";
+
 type ModalProps = {
   /**
    * Título del modal
@@ -15,10 +17,7 @@ type ModalProps = {
    * @param [].name Nombre del campo
    * @param [].value Valor del campo
    */
-  fields: {
-    name: string,
-    value: string
-  }[],
+  fields: ModalFieldsProps[],
 
   /**
    * Función que se ejecutará al cerrar el modal
@@ -41,7 +40,7 @@ export const Modal: React.FC<ModalProps> = ({
 
           <div
             className="group cursor-pointer"
-            onClick={() => onClose}
+            onClick={onClose}
           >
             <Icon
               type="xMark"
@@ -71,7 +70,7 @@ export const Modal: React.FC<ModalProps> = ({
           <Button
             primary={false}
             label="Volver"
-            onClick={() => onClose}
+            onClick={onClose}
           />
         </div>
       </div>

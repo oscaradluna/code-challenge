@@ -1,10 +1,8 @@
 // src\assets\icons\chevronLeft.ts
 
-interface ChevronLeftProps {
-    pathClassName?:string
-}
+import { IconProps } from "../../interfaces/IconProps";
 
-export const ChevronLeft: React.FC<ChevronLeftProps> = ({pathClassName}) => (
+export const ChevronLeft: React.FC<IconProps> = ({pathClassName}) => (
     <svg
         width="20"
         height="20"
