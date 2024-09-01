@@ -16,7 +16,9 @@ module.exports = {
         dark: '#161A22',
         grey: '#232A33',
         silver: '#9CA3AF',
-        light: '#D1D5DB'
+        light: '#D1D5DB',
+        soft: '#F0F1F5',
+        fair: '#F3F4F6'
       },
       backgroundColor: {
         primary: '#B1F149',
@@ -30,7 +32,8 @@ module.exports = {
       borderColor: {
         primary: '#B1F149',
         dark: '#3A424E',
-        light: '#4B5563'
+        light: '#4B5563',
+        grey: '#6B7280'
       }
     }
   },
