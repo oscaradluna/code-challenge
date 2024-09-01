@@ -19,11 +19,7 @@ export default {
       control: 'select',
       options: ['success', 'warning', 'danger'],
       description: 'Color de fondo (`success`, `warning` o `danger`).'
-    },
-  },
-  args: {
-    label: 'Enviado',
-    status: 'success'
+    }
   }
 } as Meta<typeof Badge>;
 

@@ -28,8 +28,6 @@ export default {
     }
   },
   args: {
-   id: 'search',
-   label: 'Búsqueda',
    onChange: () => {}
   }
 } as Meta<typeof Input>;

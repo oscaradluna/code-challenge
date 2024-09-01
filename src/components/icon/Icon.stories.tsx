@@ -20,10 +20,6 @@ export default {
       control: 'text',
       description: 'Nombre de la clase que tendrá el path del svg.'
     }
-  },
-  args: {
-    type: 'chevronDown',
-    pathClassName: 'fill-primary'
   }
 } as Meta<typeof Icon>;
 

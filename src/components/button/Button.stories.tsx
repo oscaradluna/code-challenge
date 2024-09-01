@@ -25,8 +25,6 @@ export default {
     }
   },
   args: {
-    primary: true,
-    label: 'Buscar',
     onClick: () => {}
   }
 } as Meta<typeof Button>;

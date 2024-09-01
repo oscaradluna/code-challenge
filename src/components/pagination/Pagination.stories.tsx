@@ -1,5 +1,6 @@
 // src\components\pagination\Pagination.stories.tsx
 
+import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Pagination } from './Pagination';
 
@@ -24,17 +25,24 @@ export default {
     }
   },
   args: {
-    pages: 2,
-    page: 1,
     onChange: () => {}
   }
 } as Meta<typeof Pagination>;
 
-const Template: StoryFn<typeof Pagination> = (args) => <Pagination {...args} />;
+const Template: StoryFn<typeof Pagination> = (args) => {
+  const [currentPage, setCurrentPage] = useState(args.page);
+
+  return (
+    <Pagination
+      {...args}
+      page={currentPage}
+      onChange={(newCurrentPage) => setCurrentPage(newCurrentPage)}
+    />
+  )
+};
 
 export const Default = Template.bind({});
 Default.args = {
   pages: 2,
-  page: 1,
-  onChange: () => {}
+  page: 1
 };
