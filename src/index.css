@@ -58,42 +58,10 @@
     @apply hover:shadow-lg hover:border-dark;
   }
 
-  /* Pagination styles */
-  .pagination {
-    @apply flex justify-center my-3.5;
-  }
-
-  .pagination__button {
-    @apply flex items-center justify-center;
-    @apply w-9 h-7 px-1 py-2 gap-2.5 rounded;
-    @apply transition-all duration-500 hover:bg-light hover:shadow-lg;
-  }
-
-  .pagination__control {
-    @apply disabled:hover:bg-transparent disabled:hover:shadow-none;
-  }
-
-  .pagination__icon {
-    @apply fill-inactive group-hover:fill-active group-disabled:group-hover:fill-inactive;
-    @apply transition-all duration-500;
-  }
-
-  .pagination__page {
-    @apply text-sm font-normal text-inactive;
-  }
-
-  .pagination__page--active {
-    @apply bg-dark text-active shadow-lg disabled:hover:bg-dark;
-  }
-
-  .pagination__page--inactive {
-    @apply text-inactive hover:text-active;
-  }
-
   /* Modal styles */
   .modal {
     @apply flex items-center justify-center;
-    @apply fixed inset-0 bg-black bg-opacity-15;
+    @apply fixed inset-0 bg-black bg-opacity-15 backdrop-blur-sm;
   }
 
   .modal__container {
@@ -133,6 +101,38 @@
 
   .modal__bottom {
     @apply mt-5 flex justify-end;
+  }
+
+  /* Pagination styles */
+  .pagination {
+    @apply flex justify-center my-3.5;
+  }
+
+  .pagination__button {
+    @apply flex items-center justify-center;
+    @apply w-9 h-7 px-1 py-2 gap-2.5 rounded;
+    @apply transition-all duration-500 hover:bg-light hover:shadow-lg;
+  }
+
+  .pagination__control {
+    @apply disabled:hover:bg-transparent disabled:hover:shadow-none;
+  }
+
+  .pagination__icon {
+    @apply fill-inactive group-hover:fill-active group-disabled:group-hover:fill-inactive;
+    @apply transition-all duration-500;
+  }
+
+  .pagination__page {
+    @apply text-sm font-normal text-inactive;
+  }
+
+  .pagination__page--active {
+    @apply bg-dark text-active shadow-lg disabled:hover:bg-dark;
+  }
+
+  .pagination__page--inactive {
+    @apply text-inactive hover:text-active;
   }
 
   /* Select styles */
@@ -208,5 +208,30 @@
 
   .table__pagination {
     @apply w-full h-16 flex items-center justify-center;
+  }
+
+  /* App styles */
+  .app {
+    @apply w-screen min-h-screen pt-16 pb-8 px-20 bg-backstory;
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .app__navbar {
+    @apply fixed inset-0 w-screen h-16 px-20 bg-backstory;
+    @apply border-b border-solid border-dark;
+    @apply flex items-center justify-between;
+  }
+
+  .app__header {
+    @apply w-full mb-8;
+    @apply flex items-end justify-between;
+  }
+
+  .app__header-title {
+    @apply text-3xl font-medium text-cream;
+  }
+
+  .app__header-filters {
+    @apply flex items-end gap-3;
   }
 }

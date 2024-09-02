@@ -65,6 +65,7 @@ export const Table: React.FC<TableProps> = ({
 
   useEffect(() => {
     setFilteredData(data);
+    setCurrentPage(1);
   }, [data])
 
   useEffect(() => {
@@ -143,7 +144,7 @@ export const Table: React.FC<TableProps> = ({
 
   return (
     <div className="table">
-      <table>
+      <table className="w-full">
         <thead className="bg-grey gap-6">
           <tr>
             {columns.map((column) => (

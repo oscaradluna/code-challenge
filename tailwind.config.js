@@ -19,7 +19,8 @@ module.exports = {
         silver: '#9CA3AF',
         light: '#D1D5DB',
         soft: '#F0F1F5',
-        fair: '#F3F4F6'
+        fair: '#F3F4F6',
+        cream: '#E0E2EB'
       },
       backgroundColor: {
         primary: '#B1F149',
