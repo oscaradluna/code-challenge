@@ -2,14 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-import { Input } from "../input/Input";
-import { Select } from "../select/Select";
-import { Button } from "../button/Button";
 import { Badge } from "../badge/Badge";
 import { Icon } from "../icon/Icon";
 import { Pagination } from "../pagination/Pagination";
 
-import { SelectOptionsProps } from "../../interfaces/SelectProps";
 import {
   TableSortProps,
   TableColumnProps,
@@ -17,11 +13,6 @@ import {
 } from "../../interfaces/TableProps";
 
 type TableProps = {
-  /**
-   * Título de la tabla
-   */
-  title: string,
-
   /**
    * Columnas que se visualizarán
    * 
@@ -32,14 +23,6 @@ type TableProps = {
    * @param [].statusPriority Prioridad que tendrá cada estatus para su ordenamiento
    */
   columns: TableColumnProps[],
-
-  /**
-   * Columnas que se podrán buscar
-   * 
-   * @param [].value Valor de la opción
-   * @param [].label Texto de la opción
-   */
-  searchColumns: SelectOptionsProps[],
 
   /**
    * Información que gestionará
@@ -67,23 +50,22 @@ type TableProps = {
 };
 
 export const Table: React.FC<TableProps> = ({
-  title,
   columns,
-  searchColumns,
   data,
   perPage,
   onView,
   onDelete
 }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedField, setSelectedField] = useState('name');
   const [sortedColumns, setSortedColumns] = useState<TableSortProps[]>([]);
-
   const [filteredData, setFilteredData] = useState<TableDataProps[]>(data);
   const [rows, setRows] = useState<TableDataProps[]>(data);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data])
 
   useEffect(() => {
     const newSortedColumns: TableSortProps[] = [];
@@ -101,10 +83,6 @@ export const Table: React.FC<TableProps> = ({
   }, [columns]);
 
   useEffect(() => {
-    search();
-  }, [data]);
-
-  useEffect(() => {
     paginate();
   }, [filteredData, perPage, currentPage]);
 
@@ -114,8 +92,8 @@ export const Table: React.FC<TableProps> = ({
     if (sortedColumn) {
       const sorted = filteredData.sort((a, b) => {
         if (column.sortType === 'alphabet') {
-          const fieldA = a[column.value]?.toString().toLocaleLowerCase();
-          const fieldB = b[column.value]?.toString().toLocaleLowerCase();
+          const fieldA = a[column.value]?.toString().toLowerCase();
+          const fieldB = b[column.value]?.toString().toLowerCase();
 
           if (fieldA < fieldB) {
             return sortedColumn.orderAsc ? -1 : 1;
@@ -155,17 +133,6 @@ export const Table: React.FC<TableProps> = ({
     }
   };
 
-  const search = () => {
-    const filtered = data.filter((row) => {
-      return row[selectedField]?.toString()
-        .toLowerCase()
-        .includes(searchTerm.toLocaleLowerCase())
-    });
-
-    setFilteredData(filtered);
-    setCurrentPage(1);
-  };
-
   const paginate = () => {
     const lastItemIndex = currentPage * perPage;
     const firstItemIndex = lastItemIndex - perPage;
@@ -174,83 +141,66 @@ export const Table: React.FC<TableProps> = ({
     setTotalPages(Math.ceil(filteredData.length / perPage));
   }
 
-  const selectedColumn = searchColumns.find(column => column.value === selectedField);
-
   return (
-    <div>
-      <div>
-        <span
-        >{title}</span>
-
-        <div>
-          <Input
-            id="search"
-            label="Búsqueda"
-            placeholder={selectedColumn?.label}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-
-          <Select
-            options={searchColumns}
-            value={selectedField}
-            onChange={(field) => setSelectedField(field)}
-          />
-
-          <Button
-            primary
-            label="Buscar"
-            onClick={() => search()}
-          />
-        </div>
-      </div>
-      
+    <div className="table">
       <table>
-        <thead>
+        <thead className="bg-grey gap-6">
           <tr>
-            {
-              columns.map((column) => (
-                <th
-                  key={column.value}
-                >
+            {columns.map((column) => (
+              <th
+                key={column.value}
+                className="table__head"
+              >
+                <div className="flex items-center justify-between">
                   <span
-                    
+                    className="table__head-label"
                   >{column.name}</span>
-
+  
                   {column.sortType === "alphabet" && (
                     <div
+                      className="group cursor-pointer"
                       onClick={() => sort(column)}
                     >
                       <Icon
                         type="caretUpDown"
-                        pathClassName="fill-active"
+                        pathClassName="table__head-icon"
                       />
                     </div>
                   )}
-
+  
                   {column.sortType === "status" && (
                     <div
+                      className="group cursor-pointer"
                       onClick={() => sort(column)}
                     >
                       <Icon
                         type="funnel"
-                        pathClassName="fill-active"
+                        pathClassName="table__head-icon"
                       />
                     </div>
                   )}
-                </th>
-              ))
-            }
+                </div>
+              </th>
+            ))}
 
             <th
-
-            >Acciones</th>
+              key="actions"
+              className="table__head"
+            >
+              <span
+                className="table__head-label"
+              >Acciones</span>
+            </th>
           </tr>
         </thead>
 
         <tbody>
           {
             rows.map((row, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className="table__row"
+              >
                 {columns.map((column) => {
                   const statusColor = column.statusColor
                     ? column.statusColor[row[column.value]]
@@ -259,6 +209,7 @@ export const Table: React.FC<TableProps> = ({
                   return (
                     <td
                       key={column.value}
+                      className="table__data"
                     >{
                       column.value === 'status' ? (
                         <Badge
@@ -266,31 +217,38 @@ export const Table: React.FC<TableProps> = ({
                           label={row[column.value]}
                         />
                       ) : (
-                        row[column.value]
+                        <span
+                          className="table__data-label"
+                        >{row[column.value]}</span>
                       )
                     }</td>
                   );
                 })}
 
-                <td>
-                  <div
-                    className="group"
-                    onClick={() => onView(row.id)}
-                  >
-                    <Icon
-                      type="eye"
-                      pathClassName="stroke-active"
-                    />
-                  </div>
+                <td
+                  key="actions"
+                  className="table__data"
+                >
+                  <div className="flex items-center justify-center">
+                    <div
+                      className="group cursor-pointer mr-2.5"
+                      onClick={() => onView(row.id)}
+                    >
+                      <Icon
+                        type="eye"
+                        pathClassName="table__data-icon"
+                      />
+                    </div>
 
-                  <div
-                    className="group"
-                    onClick={() => onDelete(row.id)}
-                  >
-                    <Icon
-                      type="trash"
-                      pathClassName="stroke-active"
-                    />
+                    <div
+                      className="group cursor-pointer"
+                      onClick={() => onDelete(row.id)}
+                    >
+                      <Icon
+                        type="trash"
+                        pathClassName="table__data-icon"
+                      />
+                    </div>
                   </div>
                 </td>  
               </tr>
@@ -299,13 +257,15 @@ export const Table: React.FC<TableProps> = ({
         </tbody>
       </table>
 
-      {totalPages > 0 && (
-        <Pagination
-          pages={totalPages}
-          page={currentPage}
-          onChange={(page) => setCurrentPage(page)}
-        />
-      )}
+      <div className="table__pagination">
+        {totalPages > 0 && (
+          <Pagination
+            pages={totalPages}
+            page={currentPage}
+            onChange={(page) => setCurrentPage(page)}
+          />
+        )}
+      </div>
     </div>
   );
 };

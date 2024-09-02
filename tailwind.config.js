@@ -26,13 +26,16 @@ module.exports = {
         secondary: '#CAF684',
         dark: '#232A33',
         light: '#3A424E',
+        grey: '#2F3646',
         success: '#34D399',
         warning: '#FDE68A',
-        danger: '#F87171'
+        danger: '#F87171',
+        backstory: '#161A22'
       },
       borderColor: {
         primary: '#B1F149',
         secondary: '#CAF684',
+        shadow: '#374151',
         dark: '#3A424E',
         light: '#4B5563',
         grey: '#6B7280'

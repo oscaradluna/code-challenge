@@ -1,15 +1,9 @@
 // src\components\table\Table.stories.tsx
 
-import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Table } from './Table';
-import { Modal } from '../modal/Modal';
+import { TableColumnProps } from "../../interfaces/TableProps";
 
-import { TableColumnProps, TableDataProps } from "../../interfaces/TableProps";
-import { SelectOptionsProps } from '../../interfaces/SelectProps';
-import { ModalFieldsProps } from '../../interfaces/ModalProps';
-
-import { getModalFields } from '../../utils/getModalFields';
 import data from '../../data/clients.json';
 
 export default {
@@ -20,17 +14,9 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    title: {
-      control: 'text',
-      description: 'Título de la tabla.'
-    },
     columns: {
       control: 'object',
       description: 'Columnas que se visualizarán.'
-    },
-    searchColumns: {
-      control: 'object',
-      description: 'Columnas que se podrán buscar.'
     },
     data: {
       control: 'object',
@@ -88,71 +74,11 @@ const columns: TableColumnProps[] = [
   }
 ];
 
-const searchColumns: SelectOptionsProps[] = [
-  {
-    value: "name",
-    label: "Nombre"
-  },
-  {
-    value: "email",
-    label: "Correo"
-  },
-  {
-    value: "state",
-    label: "Estado"
-  },
-  {
-    value: "order_number",
-    label: "No. pedido"
-  }
-];
-
-const Template: StoryFn<typeof Table> = (args) => {
-  const [rows, setRows] = useState<TableDataProps[]>(data);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalFields, setModalFields] = useState<ModalFieldsProps[]>([]);
-
-  const handleView = (id: number) => {
-    const row = rows.find(item => item.id === id);
-
-    if (row) {
-      setModalFields(getModalFields(row));
-      setIsModalOpen(true);
-    }
-  }
-
-  const handleDelete = (id: number) => {
-    const newRows = rows.filter(row => row.id !== id);
-
-    setRows(newRows);
-  }
-
-  return (
-    <>
-      <Table
-        {...args}
-        data={rows}
-        onView={(id) => handleView(id)}
-        onDelete={(id) => handleDelete(id)}
-      />
-
-      {isModalOpen && (
-        <Modal
-          title="Detalles de la orden"
-          fields={modalFields}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
-    </>
-  );
-};
+const Template: StoryFn<typeof Table> = (args) => <Table {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Clientes",
   columns: columns,
-  searchColumns: searchColumns,
   data: data,
   perPage: 10
 };
